@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}CV - {{ profile.name }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Curriculum Vitae</h1>
+</div>
+
+<section class="cv-section">
+    <div class="cv-container">
+        <div class="cv-item">
+            <h2>Education</h2>
+            <div class="cv-entry">
+                <h3>Master of Science in Computer Vision</h3>
+                <p class="cv-institution">Carnegie Mellon University</p>
+                <p class="cv-date">2024 - 2026 (Expected)</p>
+                <p>GPA: 4.0/4.0</p>
+            </div>
+            <!-- Add more education entries here -->
+        </div>
+
+        <div class="cv-item">
+            <h2>Experience</h2>
+            <div class="cv-entry">
+                <h3>Research Engineer II</h3>
+                <p class="cv-institution">Avataar.ai</p>
+                <p class="cv-date">Previous Position</p>
+                <ul>
+                    <li>Developed diffusion models for creative generation</li>
+                    <li>Built real-time 3D reconstruction pipelines</li>
+                    <li>Published research at CVPR and ECCV</li>
+                </ul>
+            </div>
+            <!-- Add more experience entries here -->
+        </div>
+
+        <div class="cv-item">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <p>Python, C++, CUDA</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Frameworks</h4>
+                    <p>PyTorch, TensorFlow, JAX</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Research Areas</h4>
+                    <p>Computer Vision, 3D Reconstruction, Neural Rendering</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cv-download">
+            <a href="#" class="btn">Download Full CV (PDF)</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

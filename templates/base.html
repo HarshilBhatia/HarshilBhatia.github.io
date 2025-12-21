@@ -1,0 +1,87 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ profile.name }} - Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-logo">{{ profile.name }}</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('research') }}" class="nav-link {% if request.endpoint == 'research' %}active{% endif %}">Research</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('projects') }}" class="nav-link {% if request.endpoint == 'projects' %}active{% endif %}">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('blog') }}" class="nav-link {% if request.endpoint == 'blog' or request.endpoint == 'blog_post' %}active{% endif %}">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                {% if profile.email %}
+                <a href="mailto:{{ profile.email }}" target="_blank">Email</a>
+                {% endif %}
+                {% if profile.github %}
+                <a href="{{ profile.github }}" target="_blank">GitHub</a>
+                {% endif %}
+                {% if profile.linkedin %}
+                <a href="{{ profile.linkedin }}" target="_blank">LinkedIn</a>
+                {% endif %}
+                {% if profile.scholar %}
+                <a href="{{ profile.scholar }}" target="_blank">Google Scholar</a>
+                {% endif %}
+            </div>
+            <p>&copy; 2024 {{ profile.name }}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

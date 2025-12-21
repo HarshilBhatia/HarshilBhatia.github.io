@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Blog - {{ profile.name }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Blog</h1>
+    <p>Thoughts on research, technology, and computer vision</p>
+</div>
+
+<section class="section">
+    <div class="blog-posts">
+        {% for post in posts %}
+        <article class="blog-post-preview">
+            <h2><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></h2>
+            <div class="post-meta">
+                <span class="post-date">{{ post.date }}</span>
+                {% if post.tags %}
+                <div class="post-tags">
+                    {% for tag in post.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+            <a href="{{ url_for('blog_post', slug=post.slug) }}" class="read-more">Read more →</a>
+        </article>
+        {% endfor %}
+        
+        {% if not posts %}
+        <p class="no-posts">No blog posts yet. Check back soon!</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
