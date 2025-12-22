@@ -1,0 +1,95 @@
+---
+import { PROFILE } from '../data';
+
+interface Props {
+  title?: string;
+  currentPage?: string;
+}
+
+const { title = `${PROFILE.name} - Portfolio`, currentPage = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">{PROFILE.name}</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/" class={`nav-link ${currentPage === 'index' ? 'active' : ''}`}>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/research" class={`nav-link ${currentPage === 'research' ? 'active' : ''}`}>Research</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/projects" class={`nav-link ${currentPage === 'projects' ? 'active' : ''}`}>Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog" class={`nav-link ${currentPage === 'blog' ? 'active' : ''}`}>Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                {PROFILE.email && (
+                    <a href={`mailto:${PROFILE.email}`} target="_blank">Email</a>
+                )}
+                {PROFILE.github && (
+                    <a href={PROFILE.github} target="_blank">GitHub</a>
+                )}
+                {PROFILE.linkedin && (
+                    <a href={PROFILE.linkedin} target="_blank">LinkedIn</a>
+                )}
+                {PROFILE.scholar && (
+                    <a href={PROFILE.scholar} target="_blank">Google Scholar</a>
+                )}
+            </div>
+            <p>&copy; 2024 {PROFILE.name}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                navMenu?.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu?.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

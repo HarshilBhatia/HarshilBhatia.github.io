@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PROFILE, PAPERS, PROJECTS, NEWS } from '../data';
+---
+
+<Layout title={PROFILE.name} currentPage="index">
+    <!-- Two column intro section -->
+    <div class="intro-section">
+        <!-- Left Column - Bio -->
+        <div class="left-column">
+            <h1>{PROFILE.name}</h1>
+            <h2>{PROFILE.title}</h2>
+            <p class="institution">{PROFILE.institution}</p>
+            
+            <div class="bio">
+                <p set:html={PROFILE.bio}></p>
+            </div>
+        </div>
+        
+        <!-- Right Column - Photo -->
+        <div class="right-column-photo">
+            {PROFILE.photo ? (
+                <img src={PROFILE.photo} alt={PROFILE.name} />
+            ) : (
+                <div class="photo-placeholder">
+                    <p>Add your photo in public/images/img1.jpg</p>
+                </div>
+            )}
+            
+            <div class="external-links">
+                <ul>
+                    <li><i class="fas fa-envelope"></i> <a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></li>
+                    {PROFILE.github && (
+                        <li><i class="fab fa-github"></i> <a href={PROFILE.github} target="_blank">@HarshilBhatia</a></li>
+                    )}
+                    {PROFILE.scholar && (
+                        <li><i class="fas fa-graduation-cap"></i> <a href={PROFILE.scholar} target="_blank">Google Scholar</a></li>
+                    )}
+                    {PROFILE.linkedin && (
+                        <li><i class="fab fa-linkedin"></i> <a href={PROFILE.linkedin} target="_blank">LinkedIn</a></li>
+                    )}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full width content below -->
+    <div class="full-width-content">
+        <section class="content-section">
+            <h2>News</h2>
+            <div class="news-list">
+                {NEWS.map(item => (
+                    <div class="news-item">
+                        <span class="news-date">{item.date}</span>
+                        <p set:html={item.text}></p>
+                    </div>
+                ))}
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2>Recent Publications</h2>
+            {PAPERS.slice(0, 3).map(paper => (
+                <div class="paper-item-compact">
+                    <h3>{paper.title}</h3>
+                    <p class="paper-meta">{paper.authors} - {paper.venue} {paper.year}</p>
+                    <div class="paper-links">
+                        {paper.pdf_link && paper.pdf_link !== '#' && (
+                            <a href={paper.pdf_link} target="_blank">PDF</a>
+                        )}
+                        {paper.code_link && paper.code_link !== '#' && (
+                            <a href={paper.code_link} target="_blank">Code</a>
+                        )}
+                    </div>
+                </div>
+            ))}
+            <a href="/research" class="see-more">See all publications →</a>
+        </section>
+    </div>
+</Layout>

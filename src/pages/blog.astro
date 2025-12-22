@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PROFILE } from '../data';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+// Sort posts by date (newest first)
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title={`Blog - ${PROFILE.name}`} currentPage="blog">
+    <div class="page-header">
+        <h1>Blog</h1>
+        <p>Thoughts on research, technology, and computer vision</p>
+    </div>
+
+    <section class="section">
+        <div class="blog-posts">
+            {sortedPosts.map(post => (
+                <article class="blog-post-preview">
+                    <h2><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                    <div class="post-meta">
+                        <span class="post-date">{post.data.date}</span>
+                        {post.data.tags && (
+                            <div class="post-tags">
+                                {post.data.tags.map(tag => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                    {post.data.excerpt && (
+                        <p class="post-excerpt">{post.data.excerpt}</p>
+                    )}
+                    <a href={`/blog/${post.slug}`} class="read-more">Read more →</a>
+                </article>
+            ))}
+            
+            {sortedPosts.length === 0 && (
+                <p class="no-posts">No blog posts yet. Check back soon!</p>
+            )}
+        </div>
+    </section>
+</Layout>

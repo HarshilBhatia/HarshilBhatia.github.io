@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PROFILE, PAPERS } from '../data';
+---
+
+<Layout title={`Research - ${PROFILE.name}`} currentPage="research">
+    <div class="page-header">
+        <h1>Research Publications</h1>
+        <p>My research focuses on computer vision, 3D reconstruction, and neural rendering.</p>
+    </div>
+
+    <section class="section">
+        <div class="papers-list">
+            {PAPERS.map(paper => (
+                <div class="paper-item">
+                    <div class="paper-content">
+                        <h3>{paper.title}</h3>
+                        <p class="paper-authors">{paper.authors}</p>
+                        <p class="paper-venue"><strong>{paper.venue} {paper.year}</strong></p>
+                        <p class="paper-abstract">{paper.abstract}</p>
+                        <div class="paper-links">
+                            {paper.pdf_link && paper.pdf_link !== '#' && (
+                                <a href={paper.pdf_link} class="paper-link" target="_blank">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    PDF
+                                </a>
+                            )}
+                            {paper.project_link && paper.project_link !== '#' && (
+                                <a href={paper.project_link} class="paper-link" target="_blank">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                    Project Page
+                                </a>
+                            )}
+                            {paper.code_link && paper.code_link !== '#' && (
+                                <a href={paper.code_link} class="paper-link" target="_blank">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                    Code
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </section>
+</Layout>
