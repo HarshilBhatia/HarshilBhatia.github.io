@@ -75,8 +75,8 @@ export const PAPERS = [
 // News items - add your latest updates here
 export const NEWS = [
   {
-    date: 'Dec 2025',
-    text: 'Started my Master\'s in Vision at CMU'
+    date: 'Aug 2025',
+    text: 'Started my Master\'s in Computer Vision at CMU'
   },
   {
     date: 'June 2023',
@@ -125,8 +125,12 @@ export const PROFILE = {
     I've also interned at MPI-INF in Germany with <a href="https://people.mpi-inf.mpg.de/~golyanik/">Dr. Vlad Golyanik</a> (geometry-based vision methods). 
     Before that I spent a wonderful summer in Budapest, working at Wigner Research Centre in Hungary with <a href="https://tncs.wigner.hu/people/kiss/">Prof. Tamas Kiss</a> (on some quantum dynamics theory stuff).
     <br><br>
-    Currently I'm interested in generative modeling, 3D vision, and world models. Always down to chat about research or cool projects! 
+
+    Occam's Razor fan, I like simple, scalable ideas with a bit of math behind them. Recently been very interested in representation learning (as a side read).
+    My current research is on generative modeling for 3D vision, and Vision Language Action models.
+    Always down to chat about research or cool projects!
     <br><br>
-    Here is my forever under-construction <a href="https://harshilbhatia.github.io/files/Harshil_Bhatia_CV.pdf">CV</a>. 
+    
+    Here is my forever under-construction <a href="/cv.pdf" target="_blank">CV</a>. 
   `
 };
