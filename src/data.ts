@@ -120,15 +120,16 @@ export const PROFILE = {
   scholar: 'https://scholar.google.com/citations?user=8rU1AaQAAAAJ',
   photo: '/images/img1.jpg',
   bio: `
-    I'm a Master's student in Computer Vision at CMU. Before grad school, I was working for 2 years as a Research Engineer at Avataar.ai working on 3D reconstruction and generative models.
+    I'm a Master's student in Computer Vision at CMU. Where i'm extremely lucky to be supervised by <a href="https://shubhtuls.github.io/"> Shubham Tulsiani</a> and <a href="https://msimchowitz.github.io/">Max Simchowitz</a>. 
+    Occam's Razor fan, I like simple, scalable ideas with a bit of math behind them. 
+    I work on representation learning (tokenisation) and Vision Language Action models. Lately been thinking about representations suited for VLMs. 
+    I'm spending the summer interning at Frontier AI and Robotics (FAR) at Amazon. I'll be working on pretraining robotic foundational models. 
+    <br><br> 
+    Past life: 
+    Before grad school, I was working for 2 years as a Research Engineer at Avataar.ai working on 3D reconstruction and generative models.
     I completed my undergrad in CS at IIT Jodhpur, where I worked under <a href="https://scholar.google.com/citations?user=okqK5UAAAAAJ&hl=en">Prof. Richa Singh</a>.
     I've also interned at MPI-INF in Germany with <a href="https://people.mpi-inf.mpg.de/~golyanik/">Dr. Vlad Golyanik</a> (geometry-based vision methods). 
     Before that I spent a wonderful summer in Budapest, working at Wigner Research Centre in Hungary with <a href="https://tncs.wigner.hu/people/kiss/">Prof. Tamas Kiss</a> (on some quantum dynamics theory stuff).
-    <br><br>
-
-    Occam's Razor fan, I like simple, scalable ideas with a bit of math behind them. Recently been very interested in representation learning (as a side read).
-    My current research is on generative modeling for 3D vision, and Vision Language Action models.
-    Always down to chat about research or cool projects!
     <br><br>
     
     Here is my forever under-construction <a href="/cv.pdf" target="_blank">CV</a>. 
