@@ -5,4 +5,4 @@
 
 git add . 
 git commit -m "update blog"
-git push origin main.
+git push origin main
